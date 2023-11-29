@@ -20,19 +20,19 @@ public class GoogleTests {
     }
 
     @Test(priority = 2)
-    public void GoogleSearchHelloWorldTest() {
+    public void googleSearchHelloWorldTest() {
         String currentURL = driver.getCurrentUrl();
-        SubmitSomethingInSearchArea("Привет,мир");
-        Assert.assertFalse(currentURL.equals(driver.getCurrentUrl()), "Поиск не удался");
+        submitSomethingInSearchArea("Привет,мир");
+        Assert.assertFalse(currentURL.equals(driver.getCurrentUrl()), "Поиск  не удался");
     }
 
     @Test(priority = 1)
-    public void GoogleSearchNothingFoundTest() {
-        SubmitSomethingInSearchArea("-DskipTests=true");
+    public void googleSearchNothingFoundTest() {
+        submitSomethingInSearchArea("-DskipTests=true");
         WebElement noResultsMessage = driver.findElement(By.cssSelector("p[aria-level='3'][role='heading'][style*='padding-top:.33em']"));
         String actualMessage = noResultsMessage.getText().trim();
         String expectedMessage = "По запросу -DskipTests=true ничего не найдено.";
-        Assert.assertTrue(actualMessage.equals(expectedMessage),"Не работает");
+        Assert.assertTrue(actualMessage.equals(expectedMessage),"Неправильно работает поиск по сообщению -DskipTests=true");
         driver.navigate().back();
     }
 
@@ -41,7 +41,7 @@ public class GoogleTests {
         driver.quit();
     }
 
-    public void SubmitSomethingInSearchArea(String value) {
+    public void submitSomethingInSearchArea(String value) {
         WebElement searchTextArea = driver.findElement(By.name("q"));
         searchTextArea.sendKeys(value);
         searchTextArea.submit();
