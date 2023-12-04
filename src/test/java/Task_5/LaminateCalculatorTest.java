@@ -21,11 +21,8 @@ public class LaminateCalculatorTest {
     @Test (priority =  1)
     public void smokeTest1() {
         submitNumbersInAreas("14,500" , "2,700","1355","190","11","500","400", "10");
-        Select option = new Select(getWebDriver().findElement(By.name("calc_direct")));
-        option.selectByValue("tow"); //toh
+        makeSelectAndClickButton("tow");
         WebElement squareResult = getWebDriver().findElement(By.id("s_lam"));
-        getWebDriver().findElement(By.cssSelector("[class='btn btn-secondary btn-lg tocalc']")).click();
-
         Assert.assertTrue(squareResult.isDisplayed(), "Параметры не рассчитались");
 
     }
@@ -33,22 +30,16 @@ public class LaminateCalculatorTest {
     @Test(priority =  2)
     public void smokeTest2() {
         submitNumbersInAreas("12,300" , "1,700","1455","290","12","350","380", "12");
-        Select option = new Select(getWebDriver().findElement(By.name("calc_direct")));
-        option.selectByValue("toh"); //toh
+        makeSelectAndClickButton("toh");
         WebElement squareResult = getWebDriver().findElement(By.id("s_lam"));
-        getWebDriver().findElement(By.cssSelector("[class='btn btn-secondary btn-lg tocalc']")).click();
-
         Assert.assertTrue(squareResult.isDisplayed(), "Параметры не рассчитались");
     }
 
     @Test(priority =  3)
     public void negativeTest1() {
         submitNumbersInAreas("-12" , "-1,7","-1355","-290","-12","-350","-380", "-12");
-        Select option = new Select(getWebDriver().findElement(By.name("calc_direct")));
-        option.selectByValue("toh"); //toh
+        makeSelectAndClickButton("toh");
         WebElement squareResult = getWebDriver().findElement(By.id("s_lam"));
-        getWebDriver().findElement(By.cssSelector("[class='btn btn-secondary btn-lg tocalc']")).click();
-
         Assert.assertTrue(squareResult.isDisplayed(), "Негативные числа не заменились - параметры не рассчитались");
     }
 
@@ -67,4 +58,11 @@ public class LaminateCalculatorTest {
         getWebDriver().findElement(By.name("calc_bias")).sendKeys(values[6]);
         getWebDriver().findElement(By.name("calc_walldist")).sendKeys(values[7]);
     }
+
+    public static void makeSelectAndClickButton(String value) {
+        Select option = new Select(getWebDriver().findElement(By.name("calc_direct")));
+        option.selectByValue(value); //toh
+        getWebDriver().findElement(By.cssSelector("[class='btn btn-secondary btn-lg tocalc']")).click();
+    }
+
 }
