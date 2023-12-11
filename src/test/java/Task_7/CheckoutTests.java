@@ -31,7 +31,7 @@ public class CheckoutTests extends BaseTest {
     @Test
     public void checkoutTest1() {
         loginPage.verifyPage();
-        loginPage.enterUsername(loginPage.getUsernames().get(2));
+        loginPage.enterUsername(loginPage.getUsernames().get(3));
         loginPage.enterPassword(loginPage.getPassword());
         loginPage.clickLoginButton();
         productPage.verifyPage();

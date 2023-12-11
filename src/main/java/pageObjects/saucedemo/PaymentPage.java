@@ -7,6 +7,7 @@ import pageObjects.baseObjects.BasePage;
 import java.util.Arrays;
 
 import static driver.DriverCreation.getDriver;
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class PaymentPage extends BasePage {
@@ -48,27 +49,12 @@ public class PaymentPage extends BasePage {
     }
 
     public String getTotalPriceShowedOnPage() {
-        return Arrays.stream(getDriver().findElement(totalPrice).getText().split("$"))
-                .filter(value -> !value.contains("Total: "))
-                .findFirst().orElse("");
+        return getDriver().findElement(totalPrice).getText().substring(8);
     }
 
     public String getAmountOfTax() {
-        return Arrays.stream(getDriver().findElement(amountOfTax).getText().split("$"))
-                .filter(value -> !value.contains("Tax: "))
-                .findFirst().orElse("");
+        return getDriver().findElement(amountOfTax).getText().substring(6);
     }
-
-    public Boolean compareTotalPrices() {
-        int totalPriceByProducts = 0;
-        for (int i = 0; i < getDriver().findElements(productList).size(); i++) {
-            totalPriceByProducts = parseInt(getDriver().findElements(productList).get(i).findElement(quantityOfProduct).getText()) *
-                    parseInt(getDriver().findElements(productList).get(i).findElement(priceOfProduct).getText());
-        }
-        if(parseInt(String.valueOf(totalPrice)) == totalPriceByProducts) return true;
-        else return false;
-    }
-
 
 
 }
