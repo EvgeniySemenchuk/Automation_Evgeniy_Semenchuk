@@ -31,7 +31,7 @@ public class DriverCreation {
                     webDriver = new EdgeDriver();
                     break;
             }
-            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+            webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
     }
 
