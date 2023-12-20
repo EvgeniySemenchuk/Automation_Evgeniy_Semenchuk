@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.swing.*;
@@ -31,11 +32,13 @@ public class BasePage {
 
 
     protected void click(By by) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
         click(getDriver().findElement(by));
     }
 
     protected void click(WebElement element) {
         System.out.println("Click on element :: " + element);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
         element.click();
     }
 

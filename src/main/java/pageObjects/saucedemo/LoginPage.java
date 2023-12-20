@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static driver.DriverCreation.getDriver;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+import static propertyUtils.PropertyReader.*;
 
 public class LoginPage extends BasePage {
 
@@ -23,9 +26,13 @@ public class LoginPage extends BasePage {
         getDriver().get(url);
     }
 
+    public void open() {
+        getDriver().get(getProperties().getProperty("url"));
+    }
+
     public void verifyPage() {
-        Assert.assertEquals(getDriver().findElement(header).getText(), "Swag Labs", "The wrong header name");
-        Arrays.asList(username, password, loginButton).forEach(el -> Assert.assertTrue(getDriver().findElement(el).isDisplayed(), "Element not displayed :: " + el));
+        wait.until(textToBe(header, "Swag Labs"));
+        Arrays.asList(username, password, loginButton).forEach(el -> wait.until(visibilityOfElementLocated(el)));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/", "Wrong page url");
     }
 
@@ -33,8 +40,16 @@ public class LoginPage extends BasePage {
         sendKeys(this.username, username);
     }
 
+   public void enterUsername() {
+        sendKeys(this.username, getProperties().getProperty("username"));
+    }
+
     public void enterPassword(String password) {
         sendKeys(this.password, password);
+    }
+
+    public void enterPassword() {
+        sendKeys(this.password, getProperties().getProperty("password"));
     }
 
     public void clickLoginButton() {
