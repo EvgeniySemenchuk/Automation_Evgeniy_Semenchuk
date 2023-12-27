@@ -5,6 +5,7 @@ import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
 
 import static driver.DriverCreation.getDriver;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class ProductPage extends BasePage {
 
@@ -12,16 +13,25 @@ public class ProductPage extends BasePage {
     private final By productList = By.className("inventory_item");
     private final By addToCard = By.tagName("button");
     private final By moveToShoppingCardButton = By.className("shopping_cart_link");
+    private final By productName = By.className("inventory_item_name");
 
 
     public void verifyPage() {
-        Assert.assertEquals(getDriver().findElement(header).getText(), "Swag Labs", "Wrong header name.");
-        Assert.assertFalse(getDriver().findElements(productList).isEmpty(), "Product list is empty.");
+        wait.until(textToBe(header, "Swag Labs"));
+        wait.until(visibilityOfElementLocated(productList));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/inventory.html", "Wrong header url.");
     }
 
     public void clickAddToCard(Integer index) {
         click(getDriver().findElements(productList).get(index).findElement(addToCard));
+    }
+
+    private By getProductName(String item) {
+        return By.linkText(item);
+    }
+    public void clickToNameOfProduct(String item) {
+        wait.until(elementToBeClickable(getProductName(item)));
+        click(getProductName(item));
     }
 
     public void clickMoveToShoppingCard() {

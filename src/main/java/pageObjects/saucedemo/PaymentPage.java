@@ -9,6 +9,8 @@ import java.util.Arrays;
 import static driver.DriverCreation.getDriver;
 import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class PaymentPage extends BasePage {
 
@@ -23,8 +25,8 @@ public class PaymentPage extends BasePage {
     private final By amountOfTax = By.className("summary_tax_label");
 
     public void verifyPage() {
-        Assert.assertEquals(getDriver().findElement(header).getText(), "Swag Labs", "Wrong header name.");
-        Assert.assertFalse(getDriver().findElements(productList).isEmpty(), "Product list is empty.");
+        wait.until(textToBe(header, "Swag Labs"));
+        wait.until(visibilityOfElementLocated(productList));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/checkout-step-two.html", "Wrong header url.");
     }
 

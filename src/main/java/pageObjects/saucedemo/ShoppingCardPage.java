@@ -7,6 +7,7 @@ import pageObjects.baseObjects.BasePage;
 import java.util.Arrays;
 
 import static driver.DriverCreation.getDriver;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 
 public class ShoppingCardPage extends BasePage {
 
@@ -17,7 +18,7 @@ public class ShoppingCardPage extends BasePage {
     private final By removeFromCard = By.tagName("button");
 
     public void verifyPage() {
-        Assert.assertEquals(getDriver().findElement(header).getText(), "Swag Labs", "Wrong header name.");
+        wait.until(textToBe(header, "Swag Labs"));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/cart.html", "Wrong header url.");
     }
 

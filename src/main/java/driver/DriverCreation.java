@@ -41,6 +41,7 @@ public class DriverCreation {
 
     public static void quitDriver() {
         webDriver.quit();
+        webDriver = null;
     }
 
 

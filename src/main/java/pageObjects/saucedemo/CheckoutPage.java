@@ -7,6 +7,8 @@ import pageObjects.baseObjects.BasePage;
 import java.util.Arrays;
 
 import static driver.DriverCreation.getDriver;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
 
 public class CheckoutPage extends BasePage {
     private final By header = By.className("app_logo");
@@ -18,8 +20,8 @@ public class CheckoutPage extends BasePage {
 
 
     public void verifyPage() {
-        Assert.assertEquals(getDriver().findElement(header).getText(), "Swag Labs", "Wrong header name.");
-        Arrays.asList(firstName, lastName, postalCode).forEach(el -> Assert.assertTrue(getDriver().findElement(el).isDisplayed(), "Element not displayed :: " + el));
+        wait.until(textToBe(header, "Swag Labs"));
+        Arrays.asList(firstName, lastName, postalCode).forEach(el -> wait.until(visibilityOfElementLocated(el)));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/checkout-step-one.html", "Wrong header url.");
     }
 
