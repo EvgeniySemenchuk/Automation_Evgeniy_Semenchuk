@@ -4,8 +4,16 @@
     <test name="Lesson 9 test">
         <classes>
             <class name="Task_9.LoginPageTests"/>
-            <class name="Task_9.ProductTests"/>
-            <class name="Task_9.ProductTests2"/>
         </classes>
+    </test>
+    <test name="Product test1">
+        <classes>
+            <class name="Task_9.ProductTests"></class>
+        </classes>
+    </test>
+    <test name="Product test2">
+        <classes>
+        <class name="Task_9.ProductTests2"></class>
+    </classes>
     </test>
 </suite>
