@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test only">
-    <test name="test-only">
+<suite name="Lesson 9 saucedemo">
+    <test name="Lesson 9 test">
         <classes>
-            <class name="Task_10.MavenParametrsTests"></class>
+            <class name="Task_11.AllureSaucedemoTests"/>
         </classes>
     </test>
 </suite>
