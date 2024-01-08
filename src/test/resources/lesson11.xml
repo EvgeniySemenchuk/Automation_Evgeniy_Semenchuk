@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Lesson 9 saucedemo">
-    <test name="Lesson 9 test">
+<suite name="Lesson 11 saucedemo">
+    <test name="Lesson 11 test">
         <classes>
             <class name="Task_11.AllureSaucedemoTests"/>
         </classes>
