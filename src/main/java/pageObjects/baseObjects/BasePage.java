@@ -10,6 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.swing.*;
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static driver.DriverCreation.getDriver;
 
@@ -51,4 +53,49 @@ public class BasePage {
         element.clear();
         element.sendKeys(charSequences);
     }
+
+    protected String getElementText(WebElement webElement) {
+        return webElement.getText();
+    }
+
+    protected String getElementText(By by) {
+        return getElementText(driver.findElement(by));
+    }
+
+    protected List<String> getElementTexts(By by) {
+        return getElementTexts(driver.findElements(by));
+    }
+
+    protected List<String> getElementTexts(List<WebElement> webElements) {
+        return webElements.stream().map(data -> data.getText()).collect(Collectors.toList());
+    }
+
+    protected void waitUntilTextToBe(By by, String expectedText) {
+        System.out.println("Wait until text to be " + expectedText);
+        wait.until(ExpectedConditions.textToBe(by,expectedText));
+    }
+
+    protected void waitUntilTextNoToBe(By by, String expectedText) {
+        System.out.println("Wait until text not to be " + expectedText);
+        wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(by,expectedText)));
+    }
+
+    protected void waitUntilElementToBeClickable(WebElement webElement) {
+        System.out.println("Wait for element to be clickable " + webElement);
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
+    protected void waitUntilElementToBeClickable(By by) {
+        waitUntilElementToBeClickable(driver.findElement(by));
+    }
+
+    protected void waitUntilElementToBeNotClickable(By by) {
+        waitUntilElementToBeNotClickable(driver.findElement(by));
+    }
+
+    protected void waitUntilElementToBeNotClickable(WebElement webElement) {
+        System.out.println("Wait until element not to be clickable  :: " + webElement);
+        wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(webElement)));
+    }
+
 }
