@@ -8,11 +8,13 @@ public class ItemPage extends BasePage {
     private final By addButton = By.xpath("//div[@class='inventory_details']//button");
     private final By moveToShoppingCardButton = By.className("shopping_cart_link");
 
-    public void clickAddButton() {
+    public ItemPage clickAddButton() {
         click(addButton);
+        return this;
     }
 
-    public void moveToShoppingCard() {
+    public ItemPage moveToShoppingCard() {
         click(moveToShoppingCardButton);
+        return this;
     }
 }
