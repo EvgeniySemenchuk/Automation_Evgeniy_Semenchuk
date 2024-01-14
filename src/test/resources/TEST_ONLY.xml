@@ -3,7 +3,7 @@
 <suite name="Test only">
     <test name="test-only">
         <classes>
-            <class name="Task_10.MavenParametrsTests"></class>
+            <class name="Task_12.SortableDataTablesTests"></class>
         </classes>
     </test>
 </suite>

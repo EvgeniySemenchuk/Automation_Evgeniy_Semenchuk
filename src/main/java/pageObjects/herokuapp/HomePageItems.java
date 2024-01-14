@@ -6,7 +6,9 @@ public enum HomePageItems {
     CHECKBOX("Checkboxes"),
     INFINITE_SCROLL("Infinite Scroll"),
     FRAMES("Frames"),
+    SORTABLE_DATA_TABLES("Sortable Data Tables"),
     DYNAMIC_CONTROLS("Dynamic Controls");
+
 
     private final String item;
 

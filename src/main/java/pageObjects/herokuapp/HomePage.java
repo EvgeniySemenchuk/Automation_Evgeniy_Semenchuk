@@ -3,7 +3,9 @@ package pageObjects.herokuapp;
 import org.openqa.selenium.By;
 import pageObjects.baseObjects.BasePage;
 
+import static driver.DriverCreation.getDriver;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static propertyUtils.PropertyReader.getProperties;
 
 public class HomePage extends BasePage {
 
@@ -13,6 +15,10 @@ public class HomePage extends BasePage {
 
     public void open(String url) {
         navigateTo(url);
+    }
+
+    public void open() {
+        getDriver().get(getProperties().getProperty("url"));
     }
 
     public void clickOnItem(HomePageItems item) {
