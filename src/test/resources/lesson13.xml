@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Lesson 13">
+    <test name="Lesson 13 page factory test">
+        <classes>
+            <class name="Task_13.PageFactoryTest"/>
+        </classes>
+    </test>
+    <test name="Lesson 13 value object test">
+        <classes>
+            <class name="Task_13.ValueObjectTests"/>
+        </classes>
+    </test>
+    <test name="Lesson 13 builder test">
+        <classes>
+            <class name="Task_13.BuilderTests"/>
+        </classes>
+    </test>
+</suite>
