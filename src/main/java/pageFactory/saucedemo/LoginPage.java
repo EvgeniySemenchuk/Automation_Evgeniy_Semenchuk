@@ -69,6 +69,11 @@ public class LoginPage extends BasePage implements Page{
         return this;
     }
 
+    public LoginPage enterUsername(User user) {
+        sendKeys(this.username, user.getUsername());
+        return this;
+    }
+
     public LoginPage enterPassword(String password) {
         sendKeys(this.password, password);
         return this;
@@ -76,6 +81,11 @@ public class LoginPage extends BasePage implements Page{
 
     public LoginPage enterPassword() {
         sendKeys(this.password, getProperties().getProperty("password"));
+        return this;
+    }
+
+    public LoginPage enterPassword(User user) {
+        sendKeys(this.username, user.getPassword());
         return this;
     }
 

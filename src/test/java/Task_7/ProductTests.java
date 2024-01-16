@@ -29,7 +29,7 @@ public class ProductTests extends BaseTest {
         loginPage.clickLoginButton();
         productPage.verifyPage();
         productPage.clickAddToCard(1);
-        Assert.assertEquals(productPage.getNumberOfProductsInShoppingCard(), "1", "Test didn't work");
+        Assert.assertEquals(productPage.getNumberOfProductsInShoppingCard(), "1", "SomeTest didn't work");
     }
 
 

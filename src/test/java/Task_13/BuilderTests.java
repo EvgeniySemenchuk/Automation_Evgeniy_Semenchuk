@@ -26,15 +26,15 @@ public class BuilderTests extends BaseTest {
     @DataProvider(name = "get user builder")
     public Object[][] getUserData() {
         return new Object[][]{
-                {new UserBuilder.Builder()
+                { UserBuilder.builder()
                         .withUsername("standard_user")
                         .withPassword("secret_sauce")
                         .build()},
-                {new UserBuilder.Builder()
+                {UserBuilder.builder()
                         .withUsername("locked_out_user")
                         .withPassword("secret_sauce")
                         .build()},
-                {new UserBuilder.Builder()
+                {UserBuilder.builder()
                         .withUsername("problem_user")
                         .withPassword("secret_sauce")
                         .build()}

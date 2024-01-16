@@ -1,5 +1,6 @@
 package pageObjects.saucedemo;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
@@ -11,7 +12,7 @@ import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
-
+@Log4j
 public class PaymentPage extends BasePage {
 
     private final By header = By.className("app_logo");
@@ -24,37 +25,45 @@ public class PaymentPage extends BasePage {
     private final By finishPaymentButton = By.id("finish");
     private final By amountOfTax = By.className("summary_tax_label");
 
-    public void verifyPage() {
+    public PaymentPage verifyPage() {
         wait.until(textToBe(header, "Swag Labs"));
         wait.until(visibilityOfElementLocated(productList));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/checkout-step-two.html", "Wrong header url.");
+        return this;
     }
 
-    public void clickCancelButton() {
+    public PaymentPage clickCancelButton() {
         click(cancelButton);
+        return this;
     }
 
-    public void clickFinishPaymentButton() {
+    public PaymentPage clickFinishPaymentButton() {
         click(finishPaymentButton);
+        return this;
     }
 
-    public void clickMoveToShoppingCardButton() {
+    public PaymentPage clickMoveToShoppingCardButton() {
         click(moveToShoppingCardButton);
+        return this;
     }
 
     public String getQuantityOfProduct(Integer index) {
+        log.info("Quantity of product is " + getDriver().findElements(productList).get(index).findElement(quantityOfProduct).getText());
         return getDriver().findElements(productList).get(index).findElement(quantityOfProduct).getText();
     }
 
     public String getPriceOfProduct(Integer index) {
+        log.info("Price of product is " + getDriver().findElements(productList).get(index).findElement(priceOfProduct).getText());
         return getDriver().findElements(productList).get(index).findElement(priceOfProduct).getText();
     }
 
     public String getTotalPriceShowedOnPage() {
+        log.info("Total price on page " + getDriver().findElement(totalPrice).getText().substring(8));
         return getDriver().findElement(totalPrice).getText().substring(8);
     }
 
     public String getAmountOfTax() {
+        log.info("Amount of tax is " + getDriver().findElement(amountOfTax).getText().substring(6));
         return getDriver().findElement(amountOfTax).getText().substring(6);
     }
 

@@ -19,30 +19,36 @@ public class CheckoutPage extends BasePage {
     private final By continueButton = By.xpath("//input[@type='submit']");
 
 
-    public void verifyPage() {
+    public CheckoutPage verifyPage() {
         wait.until(textToBe(header, "Swag Labs"));
         Arrays.asList(firstName, lastName, postalCode).forEach(el -> wait.until(visibilityOfElementLocated(el)));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/checkout-step-one.html", "Wrong header url.");
+        return this;
     }
 
-    public void enterFirstName(String firstName) {
+    public CheckoutPage enterFirstName(String firstName) {
         sendKeys(this.firstName, firstName);
+        return this;
     }
 
-    public void enterLastName(String lastName) {
+    public CheckoutPage enterLastName(String lastName) {
         sendKeys(this.lastName, lastName);
+        return this;
     }
 
-    public void enterPostalCode(String postalCode) {
+    public CheckoutPage enterPostalCode(String postalCode) {
         sendKeys(this.postalCode, postalCode);
+        return this;
     }
 
-    public void clickCancelButton() {
+    public CheckoutPage clickCancelButton() {
         click(cancelButton);
+        return this;
     }
 
-    public void clickContinueButton() {
+    public CheckoutPage clickContinueButton() {
         click(continueButton);
+        return this;
     }
 
 }

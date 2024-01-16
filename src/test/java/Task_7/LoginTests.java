@@ -23,7 +23,7 @@ import static driver.DriverCreation.getDriver;
         loginPage.enterUsername(loginPage.getUsernames().get(0));
         loginPage.enterPassword(loginPage.getPassword());
         loginPage.clickLoginButton();
-        Assert.assertNotEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com","Test didn't work");
+        Assert.assertNotEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com","SomeTest didn't work");
         getDriver().navigate().back();
     }
 
@@ -33,7 +33,7 @@ import static driver.DriverCreation.getDriver;
         loginPage.enterUsername(loginPage.getUsernames().get(2));
         loginPage.enterPassword(loginPage.getPassword());
         loginPage.clickLoginButton();
-        Assert.assertNotEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com","Test didn't work");
+        Assert.assertNotEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com","SomeTest didn't work");
         getDriver().navigate().back();
     }
 
@@ -43,7 +43,7 @@ import static driver.DriverCreation.getDriver;
         loginPage.enterUsername(loginPage.getUsernames().get(4));
         loginPage.enterPassword(loginPage.getPassword());
         loginPage.clickLoginButton();
-        Assert.assertNotEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com","Test didn't work");
+        Assert.assertNotEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com","SomeTest didn't work");
     }
 
 

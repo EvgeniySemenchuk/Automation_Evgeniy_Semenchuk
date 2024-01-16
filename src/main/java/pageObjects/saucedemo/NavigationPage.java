@@ -11,11 +11,13 @@ public class NavigationPage extends BasePage {
         return By.linkText(text);
     }
 
-    public void openMenu() {
+    public NavigationPage openMenu() {
         click(menu);
+        return this;
     }
 
-    public void clickMenuItem(String itemName) {
+    public NavigationPage clickMenuItem(String itemName) {
         click(getMenuItem(itemName));
+        return this;
     }
 }
