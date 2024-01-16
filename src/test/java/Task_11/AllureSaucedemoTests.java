@@ -24,7 +24,7 @@ public class AllureSaucedemoTests extends BaseTest {
         loginPage.open();
     }
 
-    @Description("SomeTest of adding and deleting product in shopping card")
+    @Description("Test of adding and deleting product in shopping card")
     @Step("login to saucedemo")
     @Test(priority = 1)
     public void loginTests() {
@@ -34,7 +34,7 @@ public class AllureSaucedemoTests extends BaseTest {
         loginPage.clickLoginButton();
     }
 
-    @Description("SomeTest of adding and deleting product in shopping card")
+    @Description("Test of adding and deleting product in shopping card")
     @Step("Add product to shopping card")
     @Test(priority = 2)
     public void productTest() {
@@ -44,7 +44,7 @@ public class AllureSaucedemoTests extends BaseTest {
         productPage.clickMoveToShoppingCard();
     }
 
-    @Description("SomeTest of adding and deleting product in shopping card")
+    @Description("Test of adding and deleting product in shopping card")
     @Step("Delete product from shopping card")
     @Test(priority = 3)
     public void shoppingCardTest() {

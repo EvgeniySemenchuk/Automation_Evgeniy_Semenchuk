@@ -24,7 +24,7 @@ public class PageFactoryTest extends BaseTest {
                 .clickLoginButton();
         get(ProductPage.class).verifyPage()
                 .clickAddToCard(1);
-        Assert.assertEquals(get(ProductPage.class).getNumberOfProductsInShoppingCard(), "1", "SomeTest didn't work");
+        Assert.assertEquals(get(ProductPage.class).getNumberOfProductsInShoppingCard(), "1", "Test didn't work");
     }
 
 }
