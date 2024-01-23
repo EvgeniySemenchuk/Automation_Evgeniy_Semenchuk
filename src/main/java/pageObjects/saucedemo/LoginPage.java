@@ -1,5 +1,7 @@
 package pageObjects.saucedemo;
 
+import entities.saucedemo.User;
+import entities.saucedemo.UserBuilder;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import pageObjects.baseObjects.BasePage;
@@ -22,38 +24,68 @@ public class LoginPage extends BasePage {
     private final By loginCredentials = By.id("login_credentials");
     private final By passwordCredentials = By.className("login_password");
 
-    public void open(String url) {
+    public LoginPage open(String url) {
         getDriver().get(url);
+        return this;
     }
 
-    public void open() {
+    public LoginPage open() {
         getDriver().get(getProperties().getProperty("url"));
+        return this;
     }
 
-    public void verifyPage() {
+    public LoginPage verifyPage() {
         wait.until(textToBe(header, "Swag Labs"));
         Arrays.asList(username, password, loginButton).forEach(el -> wait.until(visibilityOfElementLocated(el)));
         Assert.assertEquals(getDriver().getCurrentUrl(), "https://www.saucedemo.com/", "Wrong page url");
+        return this;
     }
 
-    public void enterUsername(String username) {
+    public LoginPage enterUsername(String username) {
         sendKeys(this.username, username);
+        return this;
     }
 
-   public void enterUsername() {
+    public LoginPage enterUsername(User user) {
+        sendKeys(this.username, user.getUsername());
+        return this;
+    }
+
+   public LoginPage enterUsername() {
         sendKeys(this.username, getProperties().getProperty("username"));
+       return this;
     }
 
-    public void enterPassword(String password) {
+    public LoginPage enterPassword(String password) {
         sendKeys(this.password, password);
+        return this;
     }
 
-    public void enterPassword() {
+    public LoginPage enterPassword() {
         sendKeys(this.password, getProperties().getProperty("password"));
+        return this;
     }
 
-    public void clickLoginButton() {
+    public LoginPage enterPassword(User user) {
+        sendKeys(this.password, user.getPassword());
+        return this;
+    }
+
+    public LoginPage clickLoginButton() {
         click(loginButton);
+        return this;
+    }
+
+    public LoginPage login(String username, String password) {
+        return enterUsername(username).enterPassword(password);
+    }
+
+    public LoginPage login(User user) {
+        return enterUsername(user.getUsername()).enterPassword(user.getPassword());
+    }
+
+    public LoginPage login(UserBuilder user) {
+        return enterUsername(user.getUsername()).enterPassword(user.getPassword());
     }
 
     public List<String> getUsernames() {

@@ -1,10 +1,11 @@
 package testngUtils;
 
+import lombok.extern.log4j.Log4j;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 
 import static propertyUtils.PropertyReader.setUpProperty;
-
+@Log4j
 public class Listener implements ITestListener {
 
     @Override
@@ -16,7 +17,7 @@ public class Listener implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
-        System.out.println("Hello i'am finished with ::" + context.getSuite().getName());
+        log.info("Hello i'am finished with ::" + context.getSuite().getName());
     }
 
 }

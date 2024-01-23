@@ -1,5 +1,6 @@
 package pageFactory.saucedemo;
 
+import lombok.extern.log4j.Log4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static driver.DriverCreation.getDriver;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
-
+@Log4j
 public class ShoppingCardPage extends BasePage implements Page {
 
     @FindBy(className = "cart_list")
@@ -55,6 +56,7 @@ public class ShoppingCardPage extends BasePage implements Page {
     }
 
     public Integer getNumberOfProductsInShoppingCard() {
+        log.info("Number products in shopping card is " + productList.size());
         return productList.size();
     }
 
