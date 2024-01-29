@@ -7,41 +7,46 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import propertyUtils.PropertyReader;
 
 import java.time.Duration;
+import java.util.HashMap;
+
+import static java.io.File.separator;
 
 public class DriverCreation {
 
-    private static WebDriver webDriver;
+    private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
     public static void createDriver(DriverTypes type) {
-        if(webDriver == null) {
+        if(webDriver.get() == null) {
             switch (type) {
                 case CHROME:
-                    ChromeOptions chromeOptions = new ChromeOptions();
-                    chromeOptions.addArguments("start-maximized");
-                    webDriver = new ChromeDriver();
+                    ChromeOptions options = new ChromeOptions();
+                    options.addArguments(PropertyReader.getProperties().getProperty("browser.option").split(";"));
+                    webDriver.set(new ChromeDriver(options));
                     break;
                 case FIREFOX:
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
-                    webDriver = new FirefoxDriver();
+                    webDriver.set(new FirefoxDriver(firefoxOptions));
                     break;
                 case IDGE:
-                    EdgeOptions edgeOptions = new EdgeOptions();
-                    webDriver = new EdgeDriver();
+                    webDriver.set(new EdgeDriver());
                     break;
             }
-            webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+            webDriver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
         }
     }
 
     public static WebDriver getDriver() {
-        return webDriver;
+        return webDriver.get();
     }
 
     public static void quitDriver() {
-        webDriver.quit();
-        webDriver = null;
+        if (webDriver.get() != null) {
+            webDriver.get().quit();
+            webDriver.remove();
+        }
     }
 
 
