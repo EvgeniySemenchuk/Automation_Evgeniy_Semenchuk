@@ -16,6 +16,9 @@ pipeline {
                 }
             }
             steps {
+                    environment {
+                        HOME="."
+                            }
                 sh 'mvn clean test -Dsuite=${SUITE} -Dconfig=${CONFIG}'
             }
             post('Allure results') {
