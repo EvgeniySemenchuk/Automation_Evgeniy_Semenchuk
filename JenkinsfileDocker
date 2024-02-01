@@ -10,10 +10,8 @@ pipeline {
         }
         stage('Run tests') {
             agent {
-                dockerfile {
-                    reuseNode true
-                    args '-u root'
-                    dir 'C:/ProgramData/Jenkins/.jenkins/workspace/QA24 pipeline+docker lesson16/'
+                docker {
+                    image 'markhobson/maven-chrome:jdk-11'
                 }
             }
             steps {
