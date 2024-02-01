@@ -12,6 +12,7 @@ pipeline {
             agent {
                 docker {
                     image 'markhobson/maven-chrome:jdk-11'
+                    args '-u root'
                 }
             }
             steps {
