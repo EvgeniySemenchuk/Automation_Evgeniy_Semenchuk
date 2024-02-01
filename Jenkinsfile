@@ -22,6 +22,7 @@ pipeline {
             }
         }
     }
+
     post("Allure results") {
         always {
             allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
