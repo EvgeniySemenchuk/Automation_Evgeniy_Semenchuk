@@ -13,6 +13,7 @@ pipeline {
                 dockerfile {
                     reuseNode true
                     args '-u root'
+                    dir 'C:/ProgramData/Jenkins/.jenkins/workspace/QA24 pipeline+docker lesson16/'
                 }
             }
             steps {
