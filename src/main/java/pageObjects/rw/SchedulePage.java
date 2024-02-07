@@ -79,5 +79,4 @@ public class SchedulePage {
         return this;
     }
 
-
 }
