@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Test only">
-    <test name="test-only">
+<suite name="Lesson 17">
+    <test name="Lesson 17 selenide tests">
+        <classes>
+            <class name="Task_17.SearchByRouteTests"/>
+        </classes>
+    </test>
+    <test name="Lesson 17 2">
         <classes>
             <class name="Task_17.SearchByStationTests"></class>
         </classes>
