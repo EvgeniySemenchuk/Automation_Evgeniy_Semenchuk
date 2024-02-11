@@ -81,6 +81,16 @@ public class BasePage {
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(by,expectedText)));
     }
 
+    protected void waitUntilElementBeVisible(By by) {
+        log.info("Wait until element to visible");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
+    protected void waitUntilElementBeVisible(WebElement webElement) {
+        log.info("Wait until element to visible");
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
     protected void waitUntilElementToBeClickable(WebElement webElement) {
         log.info("Wait for element to be clickable " + webElement);
         wait.until(ExpectedConditions.elementToBeClickable(webElement));
