@@ -30,11 +30,6 @@ public class HomePage extends BasePage {
         return driver.findElement(By.name("book" + index));
     }
 
-//    public HomePage open() {
-//        getDriver().get(getProperties().getProperty("url"));
-//        return this;
-//    }
-
     public HomePage open() {
         getDriver().get("file://" + System.getProperty("user.dir") + "/" + "src/test/resources/files/mypage.html");
         return this;
